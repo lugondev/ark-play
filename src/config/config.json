@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "eventName": "My Event Name",
+    "eventSubheader": "The very best summer event!",
+    "description": "To celebrate this fictional event, I am writing a description of who what where and why. It's probably a good idea to explain the general rules of the event here, although it's recommended you also explicitely state tham in the rules section below.<br /><br />And now, a substract from the Lorem Ipsum passage: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br /><br />",
+    "rules": [
+      "Predict the price of ARK in USD on 2019-09-01",
+      "Price according to CryptoCompare's historical data",
+      "5 ARK per submission",
+      "One submission per address",
+      "All dates are in UTC 00:00",
+      "Be fair and don't submit too many predictions 😎"
+    ]
+  },
+  "layout": {
+    "theme": "default"
+  },
+  "event": {
+    "type": "sweepstake",
+    "contestOpen": "2019-06-01",
+    "contestClosed": "2019-07-12",
+    "submissionPrice": 5,
+    "address": "DEZfV8gbH4toSt2TPJ2t3FkqvxHLSpTgy4"
+  },
+  "network": {
+    "coin": "ARK",
+    "api": "https://dexplorer.ark.io/api",
+    "uri": "ark",
+    "explorer": "https://dexplorer.ark.io",
+    "arktoshis": 100000000
+  },
+  "sweepstake": {
+    "coinToPredict": "ARK",
+    "dateToPredict": "2019-07-12",
+    "predictionCurrency": "USD",
+    "minAmount": 0.01,
+    "maxAmount": 2,
+    "chartBars": 8,
+    "chartFloor": 0
+  },
+  "raffle": {
+    "displayTickets": 12,
+    "prefix": "SUM",
+    "tickets": [
+      "SUM-000",
+      "SUM-001",
+      "SUM-002",
+      "SUM-003",
+      "SUM-004",
+      "SUM-005",
+      "SUM-006",
+      "SUM-007",
+      "SUM-008",
+      "SUM-009",
+      "SUM-010",
+      "SUM-011",
+      "SUM-012",
+      "SUM-013",
+      "SUM-014",
+      "SUM-015",
+      "SUM-016",
+      "SUM-017",
+      "SUM-018",
+      "SUM-019",
+      "SUM-020",
+      "SUM-021",
+      "SUM-022",
+      "SUM-023",
+      "SUM-024",
+      "SUM-025",
+      "SUM-026",
+      "SUM-027",
+      "SUM-028",
+      "SUM-029",
+      "SUM-030",
+      "SUM-031",
+      "SUM-032",
+      "SUM-033",
+      "SUM-034",
+      "SUM-035",
+      "SUM-036",
+      "SUM-037",
+      "SUM-038",
+      "SUM-039",
+      "SUM-040",
+      "SUM-041",
+      "SUM-042",
+      "SUM-043",
+      "SUM-044",
+      "SUM-045",
+      "SUM-046",
+      "SUM-047",
+      "SUM-048",
+      "SUM-049"
+    ]
+  }
+}

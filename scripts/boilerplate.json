@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "eventName": "",
+    "eventSubheader": "",
+    "description": "",
+    "rules": []
+  },
+  "layout": {
+    "theme": ""
+  },
+  "event": {
+    "type": "",
+    "contestOpen": "",
+    "contestClosed": "",
+    "submissionPrice": 0,
+    "address": ""
+  },
+  "network": {
+    "coin": "",
+    "api": "",
+    "uri": "",
+    "explorer": "",
+    "arktoshis": 0
+  },
+  "sweepstake": {
+    "coinToPredict": "",
+    "dateToPredict": "",
+    "predictionCurrency": "",
+    "minAmount": 0,
+    "maxAmount": 0,
+    "chartBars": 8,
+    "chartFloor": 0
+  },
+  "raffle": {
+    "displayTickets": 0,
+    "prefix": "",
+    "tickets": []
+  }
+}

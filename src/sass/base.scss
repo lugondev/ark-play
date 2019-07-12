@@ -1,0 +1,227 @@
+@import '~animate.css';
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+$font-family-sans-serif: Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', 'Noto Color Emoji' !important;
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+a {
+  color: theme-color('secondary');
+}
+
+a:hover {
+  color: darken(theme-color('secondary'), 25%);
+}
+
+html {
+  font-size: 0.75rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 0.8rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1rem;
+  }
+}
+
+.logo {
+  height: 1.25em;
+}
+
+.acf {
+  height: 1em;
+}
+
+.accentuated {
+  font-size: 100%;
+}
+
+.shuffle {
+  height: 2em;
+}
+
+@-webkit-keyframes BackgroundFlow {
+  0% {
+    background-position: 61% 0%;
+  }
+  50% {
+    background-position: 40% 100%;
+  }
+  100% {
+    background-position: 61% 0%;
+  }
+}
+@-moz-keyframes BackgroundFlow {
+  0% {
+    background-position: 61% 0%;
+  }
+  50% {
+    background-position: 40% 100%;
+  }
+  100% {
+    background-position: 61% 0%;
+  }
+}
+@-o-keyframes BackgroundFlow {
+  0% {
+    background-position: 61% 0%;
+  }
+  50% {
+    background-position: 40% 100%;
+  }
+  100% {
+    background-position: 61% 0%;
+  }
+}
+@keyframes BackgroundFlow {
+  0% {
+    background-position: 61% 0%;
+  }
+  50% {
+    background-position: 40% 100%;
+  }
+  100% {
+    background-position: 61% 0%;
+  }
+}
+
+$speed: 45s;
+
+body {
+  background: linear-gradient(231deg, theme-color('primary'), theme-color('secondary'), $third);
+  background-size: 600% 600%;
+
+  -webkit-animation: BackgroundFlow $speed ease infinite;
+  -moz-animation: BackgroundFlow $speed ease infinite;
+  -o-animation: BackgroundFlow $speed ease infinite;
+  animation: BackgroundFlow $speed ease infinite;
+}
+
+header {
+  padding-top: 3em;
+  padding-bottom: 2em;
+  color: #fff;
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1em;
+  background: linear-gradient(
+    231deg,
+    lighten(theme-color('secondary'), 15%),
+    lighten(theme-color('secondary'), 25%)
+  );
+  outline: none;
+  opacity: 0.75;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: darken(theme-color('secondary'), 25%);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.no-border {
+  border: none;
+}
+
+.title-bar {
+  background-color: #fff;
+  height: 1px;
+  border: 5;
+}
+
+.ticket {
+  opacity: 0.5;
+  width: 7em;
+  transition: 0.2s;
+  padding: 1em 0.4em;
+  border: none;
+}
+
+.ticket:hover,
+.ticket.active,
+.ticket.focus {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.test2 {
+  opacity: 1;
+}
+
+.ticket-claimed {
+  text-decoration: none;
+  background: linear-gradient(231deg, #c0c0c0, #808080);
+}
+
+.ticket-unclaimed {
+  cursor: pointer;
+  background: linear-gradient(
+    231deg,
+    darken(theme-color('primary'), 5%),
+    darken(theme-color('secondary'), 5%),
+    darken($third, 5%)
+  );
+  background-size: 600% 600%;
+  -webkit-animation: BackgroundFlow 15s ease infinite;
+  -moz-animation: BackgroundFlow 15s ease infinite;
+  -o-animation: BackgroundFlow 15s ease infinite;
+  animation: BackgroundFlow 15s ease infinite;
+}
+
+.submission-row {
+  transition: 0.2s;
+}
+
+.submission-row:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.manual-info {
+  width: 24em;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
