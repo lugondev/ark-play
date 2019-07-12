@@ -11,8 +11,7 @@ const fetchCurrentValue = (): Promise<any> => {
     }`
   )
     .then(res => res.json())
-    .then(json => json[sweepstake.predictionCurrency])
-    .catch(err => new Error(err));
+    .then(json => json[sweepstake.predictionCurrency]);
 };
 
 const fetchFinalPrice = async (): Promise<number> => {
@@ -24,8 +23,7 @@ const fetchFinalPrice = async (): Promise<number> => {
     }&tsyms=${sweepstake.predictionCurrency}&ts=${ts}`
   )
     .then(res => res.json())
-    .then(json => json[sweepstake.coinToPredict][sweepstake.predictionCurrency])
-    .catch(err => console.error(err));
+    .then(json => json[sweepstake.coinToPredict][sweepstake.predictionCurrency]);
 
   return price;
 };

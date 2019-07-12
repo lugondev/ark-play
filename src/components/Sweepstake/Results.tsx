@@ -20,14 +20,20 @@ const Results = (props: ResultsProps) => {
     finalPrice: 0,
     winners: []
   });
+  const [error, setError] = useState<string>('');
 
   useEffect((): void => {
-    generateResults(props.submissions).then((calculatedResults: FinalResults) => {
-      setResults({
-        finalPrice: calculatedResults.finalPrice,
-        winners: calculatedResults.winners
+    generateResults(props.submissions)
+      .then((calculatedResults: FinalResults) => {
+        setResults({
+          finalPrice: calculatedResults.finalPrice,
+          winners: calculatedResults.winners
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        setError('Could not load pricing data.');
       });
-    });
   }, [props.submissions]);
 
   return (
@@ -41,7 +47,7 @@ const Results = (props: ResultsProps) => {
         </h5>
         <hr className="w-25" />
 
-        {results.winners.length > 0 ? (
+        {results.winners.length > 0 && (
           <>
             <div className="mb-5">
               The opening price of {sweepstake.coinToPredict} on {sweepstake.dateToPredict} was:
@@ -90,8 +96,14 @@ const Results = (props: ResultsProps) => {
               </tbody>
             </table>
           </>
-        ) : (
-          <span className="text-muted">Loading...</span>
+        )}
+
+        {error.length > 0 && (
+          <div className="row justify-content-center">
+            <div className="alert alert-danger w-50 mt-5 mb-5" role="alert">
+              {error}
+            </div>
+          </div>
         )}
       </div>
     </div>
