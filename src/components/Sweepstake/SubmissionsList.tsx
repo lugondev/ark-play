@@ -1,10 +1,10 @@
 import React from 'react';
 import { convertToDate } from '../../utils/dates';
-
 import { ContestSubmission } from '../../interfaces/general';
 
 interface SubmissionsListProps {
   submissions: ContestSubmission[];
+  symbol: string;
 }
 
 const SubmissionsList = (props: SubmissionsListProps) => (
@@ -29,7 +29,9 @@ const SubmissionsList = (props: SubmissionsListProps) => (
           <tbody>
             {props.submissions.map((submission: ContestSubmission, index: number) => (
               <tr className="submission-row" key={`${submission} + ${index}`}>
-                <td className="font-weight-bold">$ {submission.vendorField}</td>
+                <td className="font-weight-bold">
+                  {props.symbol} {submission.vendorField}
+                </td>
                 <td>{submission.sender}</td>
                 <td className="no-wrap">{convertToDate(submission.timestamp)}</td>
               </tr>

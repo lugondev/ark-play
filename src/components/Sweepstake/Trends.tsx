@@ -14,7 +14,7 @@ const calculateStepSize = (): number =>
   (sweepstake.maxAmount - sweepstake.chartFloor) / sweepstake.chartBars;
 
 const determineDecimals = (num: number): number => {
-  if (num < 1) return 3;
+  if (num < 10) return 3;
   if (num < 1000) return 2;
   return 0;
 };

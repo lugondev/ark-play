@@ -6,6 +6,7 @@ import Results from './Results';
 import SubmissionsList from './SubmissionsList';
 
 import { sweepstake } from '../../config';
+import { currencies } from '../../config/constants';
 import { submit } from '../../utils/general';
 import { fetchCurrentValue } from '../../utils/sweepstake';
 import { shouldShowResults } from '../../utils/dates';
@@ -75,7 +76,10 @@ const Sweepstake = (props: SweepstakeProps) => {
 
       <Trends submissions={props.submissions} />
 
-      <SubmissionsList submissions={props.submissions} />
+      <SubmissionsList
+        submissions={props.submissions}
+        symbol={currencies[sweepstake.predictionCurrency]}
+      />
     </>
   );
 };
