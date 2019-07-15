@@ -24,7 +24,12 @@ const Disclaimer = () => {
       </span>
 
       <div className="w-25">
-        <Modal isOpen={showDisclaimer} contentLabel="Disclaimer" style={customStyles}>
+        <Modal
+          isOpen={showDisclaimer}
+          contentLabel="Disclaimer"
+          style={customStyles}
+          overlayClassName="overlay"
+        >
           <h1 className="text-center">Disclaimer</h1>
           <hr className="w-50" />
 
