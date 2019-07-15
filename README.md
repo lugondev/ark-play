@@ -1,13 +1,20 @@
 # ARK Play 🕹️
 
-ARK Play is an easy to use and configurable ‘on-chain’ web app that can serve numerous types of events and competitions.
+ARK Play is an easy to use and configurable ‘on-chain’ web app that can serve numerous types of events and competitions in the ARK Ecosystem and its bridgechains.
 
 The following game types are currently supported:
 
 - Sweepstake
 - Raffle
 
-A live demo can be found [here](https://arkrelay.com/playdemo).
+The following projects are currently supported (including network presets):
+
+- ARK
+- ARK (devnet)
+- DGT
+- XQR
+
+Demos: [Sweepstake](https://arkrelay.com/play/sweepstake) / [Raffle](https://arkrelay.com/play/raffle)
 
 ## Disclaimer
 
