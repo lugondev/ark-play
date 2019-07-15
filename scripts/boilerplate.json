@@ -29,7 +29,8 @@
     "minAmount": 0,
     "maxAmount": 0,
     "chartBars": 8,
-    "chartFloor": 0
+    "chartFloor": 0,
+    "sliderStepSize": "0.01"
   },
   "raffle": {
     "displayTickets": 0,

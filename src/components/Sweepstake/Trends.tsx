@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { sweepstake } from '../../config';
+import { currencies } from '../../config/constants';
 import { ContestSubmission } from '../../interfaces/general';
 
 const Chart = require('chart.js');
@@ -10,31 +11,40 @@ interface TrendsProps {
 }
 
 const calculateStepSize = (): number =>
-  Math.round(((sweepstake.maxAmount - sweepstake.chartFloor) * 1000) / sweepstake.chartBars);
+  (sweepstake.maxAmount - sweepstake.chartFloor) / sweepstake.chartBars;
+
+const determineDecimals = (num: number): number => {
+  if (num < 1) return 3;
+  if (num < 1000) return 2;
+  return 0;
+};
 
 const generateLabels = (): string[] => {
   /* This function temporarily multiplies and divides the 
   amounts by 1000 to properly handle decimal numbers*/
 
   const labels: string[] = [];
-  let barValue: number = sweepstake.chartFloor;
+  let barValue: number = sweepstake.chartFloor * 1000;
 
-  const stepSize = calculateStepSize();
+  const stepSize = calculateStepSize() * 1000;
 
   for (let i = 0; i < sweepstake.chartBars; i++) {
-    const fromValue: number = barValue / 1000 + sweepstake.chartFloor;
-    const toValue: number = (barValue + stepSize - 1) / 1000 + sweepstake.chartFloor;
-    labels.push(`$ ${fromValue.toFixed(2)} - $ ${toValue.toFixed(2)}`);
+    const fromValue: number = barValue / 1000;
+    const toValue: number = (barValue + stepSize - 1) / 1000;
+    labels.push(
+      `${currencies[sweepstake.predictionCurrency]} ${fromValue.toFixed(
+        determineDecimals(fromValue)
+      )} - $ ${toValue.toFixed(determineDecimals(toValue))}`
+    );
 
     barValue += stepSize;
   }
-
   return labels;
 };
 
 const generateData = (submissions: ContestSubmission[]): number[] => {
   const data: number[] = [];
-  const stepSize: number = calculateStepSize();
+  const stepSize: number = calculateStepSize() * 1000;
   let valueRange: number = sweepstake.chartFloor * 1000;
 
   for (let i = 0; i < sweepstake.chartBars; i++) {
@@ -79,6 +89,10 @@ const generateChartInput = (submissions: ContestSubmission[]) => ({
     scales: {
       yAxes: [
         {
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1
+          },
           gridLines: {
             drawBorder: false,
             display: false

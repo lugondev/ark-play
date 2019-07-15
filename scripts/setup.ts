@@ -244,6 +244,13 @@ if (config.event.type === 'sweepstake') {
       defaultInput: Math.floor(config.sweepstake.minAmount)
     })
   );
+
+  logQ('\nSlider step size?');
+  logAlt('Leave empty for default (0.01)');
+  config.sweepstake.sliderStepSize = readlineSync.prompt({
+    defaultInput: '0.01'
+  });
+  logInput(`Slider step size:: ${config.sweepstake.sliderStepSize}`);
 } else if (config.event.type === 'raffle') {
   logHeader('RAFFLE GAME SETTINGS');
 

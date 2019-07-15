@@ -32,7 +32,7 @@ const UserSubmission = (props: UserSubmissionProps) => (
           defaultValue={props.initialVal}
           min={sweepstake.minAmount}
           max={sweepstake.maxAmount}
-          step="0.01"
+          step={sweepstake.sliderStepSize}
           onChange={props.handlePredictionChange}
           className="slider mb-3"
           id="myRange"

@@ -44,7 +44,7 @@ const fetchSubmissions = async (): Promise<ContestSubmission[]> => {
 
 const isRegexMatch = (submission: string) => {
   if (event.type === 'sweepstake') {
-    return submission.match(/^\d+\.\d+$/);
+    return submission.match(/^\d+\.?\d+$/);
   }
   return submission.match(new RegExp(`${raffle.prefix}-\\d+`));
 };
