@@ -12,8 +12,7 @@ interface TrendsProps {
   submissions: ContestSubmission[];
 }
 
-const calculateStepSize = (): number =>
-  (sweepstake.maxAmount - sweepstake.chartFloor) / sweepstake.chartBars;
+const calculateStepSize = (min: number, max: number): number => (max - min) / sweepstake.chartBars;
 
 const determineDecimals = (num: number): number => {
   if (num < 10) return 3;
@@ -21,14 +20,29 @@ const determineDecimals = (num: number): number => {
   return 0;
 };
 
-const generateLabels = (): string[] => {
+const determineCeiling = (submissions: ContestSubmission[]): { min: number; max: number } => {
+  const roundTo = (num: number): number => {
+    if (num < 10) return 1;
+    if (num < 1000) return 100;
+    return 1000;
+  };
+
+  const predictions = submissions.map(sub => parseFloat(sub.vendorField));
+  const lowestVal = Math.min(...predictions);
+  const highestVal = Math.max(...predictions);
+
+  const min = Math.floor(lowestVal / roundTo(lowestVal)) * roundTo(lowestVal);
+  const max = Math.ceil(highestVal / roundTo(highestVal)) * roundTo(highestVal);
+
+  return { min, max };
+};
+
+const generateLabels = (submissions: ContestSubmission[], min: number, max: number): string[] => {
   /* This function temporarily multiplies and divides the 
   amounts by 1000 to properly handle decimal numbers*/
-
+  let barValue: number = min * 1000;
   const labels: string[] = [];
-  let barValue: number = sweepstake.chartFloor * 1000;
-
-  const stepSize = calculateStepSize() * 1000;
+  const stepSize = calculateStepSize(min, max) * 1000;
 
   for (let i = 0; i < sweepstake.chartBars; i++) {
     const fromValue: number = barValue / 1000;
@@ -46,10 +60,11 @@ const generateLabels = (): string[] => {
   return labels;
 };
 
-const generateData = (submissions: ContestSubmission[]): number[] => {
+const generateData = (submissions: ContestSubmission[], min: number, max: number): number[] => {
   const data: number[] = [];
-  const stepSize: number = calculateStepSize() * 1000;
-  let valueRange: number = sweepstake.chartFloor * 1000;
+  const stepSize: number = calculateStepSize(min, max) * 1000;
+
+  let valueRange: number = min * 1000;
 
   for (let i = 0; i < sweepstake.chartBars; i++) {
     const fromValue: number = valueRange;
@@ -67,57 +82,61 @@ const generateData = (submissions: ContestSubmission[]): number[] => {
   return data;
 };
 
-const generateChartInput = (submissions: ContestSubmission[]) => ({
-  type: 'bar',
-  data: {
-    labels: generateLabels(),
-    datasets: [
-      {
-        label: '# of Submittions',
-        data: generateData(submissions),
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.35)',
-          'rgba(54, 162, 235, 0.35)',
-          'rgba(255, 206, 86, 0.35)',
-          'rgba(75, 192, 192, 0.35)',
-          'rgba(153, 102, 255, 0.35)',
-          'rgba(255, 159, 64, 0.35)',
-          'rgba(255, 59, 248, 0.35)',
-          'rgba(59, 219, 255, 0.35)'
-        ]
-      }
-    ]
-  },
-  options: {
-    legend: { display: false },
-    scales: {
-      yAxes: [
+const generateChartInput = (submissions: ContestSubmission[]) => {
+  const { min, max } = determineCeiling(submissions);
+
+  return {
+    type: 'bar',
+    data: {
+      labels: generateLabels(submissions, min, max),
+      datasets: [
         {
-          ticks: {
-            fontSize: labelFontSize,
-            beginAtZero: true,
-            stepSize: 1
-          },
-          gridLines: {
-            drawBorder: false,
-            display: false
-          }
-        }
-      ],
-      xAxes: [
-        {
-          ticks: {
-            fontSize: labelFontSize
-          },
-          gridLines: {
-            drawBorder: false,
-            display: false
-          }
+          label: '# of Submittions',
+          data: generateData(submissions, min, max),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.35)',
+            'rgba(54, 162, 235, 0.35)',
+            'rgba(255, 206, 86, 0.35)',
+            'rgba(75, 192, 192, 0.35)',
+            'rgba(153, 102, 255, 0.35)',
+            'rgba(255, 159, 64, 0.35)',
+            'rgba(255, 59, 248, 0.35)',
+            'rgba(59, 219, 255, 0.35)'
+          ]
         }
       ]
+    },
+    options: {
+      legend: { display: false },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              fontSize: labelFontSize,
+              beginAtZero: true,
+              stepSize: 1
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }
+        ],
+        xAxes: [
+          {
+            ticks: {
+              fontSize: labelFontSize
+            },
+            gridLines: {
+              drawBorder: false,
+              display: false
+            }
+          }
+        ]
+      }
     }
-  }
-});
+  };
+};
 
 const Trends = (props: TrendsProps) => {
   useEffect(() => {
