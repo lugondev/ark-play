@@ -51,6 +51,13 @@ const networkSettings: NetworkSetting = {
     explorer: 'https://dexplorer.ark.io',
     arktoshis: 100000000
   },
+  DGT: {
+    coin: 'DGT',
+    api: 'https://api.digitalgemtoken.com/api',
+    uri: 'ark',
+    explorer: 'http://www.explorer.digitalgemtoken.com:4200/#',
+    arktoshis: 100000000
+  },
   XQR: {
     coin: 'XQR',
     api: 'https://qredit.cloud/api',
