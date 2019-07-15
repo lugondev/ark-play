@@ -6,6 +6,8 @@ import { ContestSubmission } from '../../interfaces/general';
 
 const Chart = require('chart.js');
 
+const labelFontSize = window.screen.width < 600 ? 5 : 12;
+
 interface TrendsProps {
   submissions: ContestSubmission[];
 }
@@ -32,9 +34,11 @@ const generateLabels = (): string[] => {
     const fromValue: number = barValue / 1000;
     const toValue: number = (barValue + stepSize - 1) / 1000;
     labels.push(
-      `${currencies[sweepstake.predictionCurrency]} ${fromValue.toFixed(
+      `${currencies[sweepstake.predictionCurrency]}${fromValue.toFixed(
         determineDecimals(fromValue)
-      )} - $ ${toValue.toFixed(determineDecimals(toValue))}`
+      )} - ${currencies[sweepstake.predictionCurrency]}${toValue.toFixed(
+        determineDecimals(toValue)
+      )}`
     );
 
     barValue += stepSize;
@@ -90,6 +94,7 @@ const generateChartInput = (submissions: ContestSubmission[]) => ({
       yAxes: [
         {
           ticks: {
+            fontSize: labelFontSize,
             beginAtZero: true,
             stepSize: 1
           },
@@ -101,6 +106,9 @@ const generateChartInput = (submissions: ContestSubmission[]) => ({
       ],
       xAxes: [
         {
+          ticks: {
+            fontSize: labelFontSize
+          },
           gridLines: {
             drawBorder: false,
             display: false
