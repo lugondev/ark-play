@@ -29,6 +29,8 @@ const Disclaimer = () => {
           contentLabel="Disclaimer"
           style={customStyles}
           overlayClassName="overlay"
+          ariaHideApp={false}
+          onRequestClose={toggleShowDisclaimer}
         >
           <h1 className="text-center">Disclaimer</h1>
           <hr className="w-50" />
