@@ -1,12 +1,13 @@
 import { event, network } from '../config';
 
 const submit = (prediction: string): void => {
-  const paymentUrl: string = `${network.uri}:${event.address}?amount=${
-    event.submissionPrice
-  }&vendorField=${prediction}`;
+  const paymentUrl: string = generateDataUrl(prediction);
 
   window.open(paymentUrl, '_self');
 };
+
+const generateDataUrl = (prediction: string): string =>
+  `${network.uri}:${event.address}?amount=${event.submissionPrice}&vendorField=${prediction}`;
 
 const fetchCurrentPrize = async (): Promise<number> => {
   const options = {
@@ -24,4 +25,4 @@ const fetchCurrentPrize = async (): Promise<number> => {
   return balance / network.arktoshis;
 };
 
-export { submit, fetchCurrentPrize };
+export { submit, fetchCurrentPrize, generateDataUrl };
