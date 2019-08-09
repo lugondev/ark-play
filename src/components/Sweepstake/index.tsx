@@ -15,6 +15,7 @@ import { ContestSubmission } from '../../interfaces/general';
 interface SweepstakeProps {
   eventIsOpen: boolean;
   submissions: ContestSubmission[];
+  prizePool: number;
 }
 
 const initialVal = (
@@ -71,7 +72,7 @@ const Sweepstake = (props: SweepstakeProps) => {
       )}
 
       {shouldShowResults(sweepstake.dateToPredict) && !props.eventIsOpen && (
-        <Results submissions={props.submissions} />
+        <Results submissions={props.submissions} prizePool={props.prizePool} />
       )}
 
       <Trends submissions={props.submissions} />

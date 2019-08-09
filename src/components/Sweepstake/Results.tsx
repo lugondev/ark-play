@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { generateResults } from '../../utils/sweepstake';
 import { SweepstakeSubmission } from '../../interfaces/sweepstake';
 import { ContestSubmission } from '../../interfaces/general';
-import { sweepstake } from '../../config';
-import { currencies } from '../../config/constants';
+import { sweepstake, event, network } from '../../config';
+import { currencies, cryptos } from '../../config/constants';
 
 interface ResultsProps {
   submissions: ContestSubmission[];
+  prizePool: number;
 }
 
 interface FinalResults {
@@ -51,12 +52,28 @@ const Results = (props: ResultsProps) => {
           <>
             <div className="mb-5">
               The opening price of {sweepstake.coinToPredict} on {sweepstake.dateToPredict} was:
-              <h1 className="display-1 mt-2 font-weight-bold text-secondary animated pulse infinite">
-                {currencies[sweepstake.predictionCurrency]} {results.finalPrice.toFixed(2)}
+              <h1 className="display-3 mt-2 font-weight-bold text-secondary animated pulse infinite">
+                {currencies[sweepstake.predictionCurrency]}
+                {results.finalPrice.toFixed(2)}
               </h1>
-              Winner:
-              <br />
-              <span className="font-weight-bold">{results.winners[0].sender}</span>
+              <div>
+                <h5 className="mt-4 text-center font-weight-bold">
+                  {event.prizes.length > 1 ? 'Winners' : 'Winner'}:
+                </h5>
+                <hr className="w-25" />
+                <table className="mx-auto">
+                  {event.prizes.map((percentage: number, index: number) => (
+                    <tr className="text-left">
+                      <td className="mr-5">{results.winners[index].sender}</td>
+                      <td>
+                        <strong className="ml-4">
+                          {props.prizePool * percentage} {cryptos[network.coin]}{' '}
+                        </strong>
+                      </td>
+                    </tr>
+                  ))}
+                </table>
+              </div>
             </div>
             <h1 className="mb-3">
               <span role="img" aria-label="Medal">

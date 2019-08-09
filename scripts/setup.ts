@@ -93,6 +93,39 @@ readlineSync.promptCLLoop({
 });
 logInput(`Succesfully added ${config.meta.rules.length} rule(s)`);
 
+logQ('\nPrize distribution?');
+logAlt(`Configure the amount of winners/prizes by entering`);
+logAlt(`decimal numbers seperated by a comma. Leave empty for`);
+logAlt(`one single winner that takes the full prize.`);
+logAlt(`Eg: 0.7, 0.2, 0.1 means that there are 3 winners.`);
+logAlt(`First place would take 70%, second place 20%, third place 10%`);
+logAlt(`The entered numbers should add up to 1`);
+while (true) {
+  let userInput: string = '';
+
+  userInput = readlineSync.prompt({
+    defaultInput: 1
+  });
+
+  const floatArr = userInput
+    .replace(' ', '')
+    .split(',')
+    .map(num => parseFloat(num) * 100);
+
+  if (Math.round(floatArr.reduce((a, b) => a + b)) === 100) {
+    config.event.prizes = floatArr.map(num => num / 100);
+    logInput(`Number of prizes: ${config.event.prizes.length}`);
+    logInput(
+      `Prize distribution: ${config.event.prizes.map(
+        (prize, index) => `${index + 1}. ${prize * 100}%`
+      )}`
+    );
+    break;
+  } else {
+    logDanger('Invalid prize input.\n');
+  }
+}
+
 logHeader('LAYOUT');
 
 logQ('Theme?');

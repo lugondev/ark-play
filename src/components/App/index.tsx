@@ -83,7 +83,11 @@ const App: React.FC = () => {
           <div className="row">
             <div className="col">
               {event.type === 'sweepstake' && (
-                <Sweepstake eventIsOpen={eventIsOpen} submissions={submissions} />
+                <Sweepstake
+                  eventIsOpen={eventIsOpen}
+                  submissions={submissions}
+                  prizePool={prizePool}
+                />
               )}
               {event.type === 'raffle' && (
                 <Raffle submissions={submissions} eventIsOpen={eventIsOpen} />
