@@ -1,98 +1,53 @@
 {
   "meta": {
-    "eventName": "My Event Name",
-    "eventSubheader": "The very best summer event!",
-    "description": "To celebrate this fictional event, I am writing a description of who what where and why. It's probably a good idea to explain the general rules of the event here, although it's recommended you also explicitely state tham in the rules section below.<br /><br />And now, a substract from the Lorem Ipsum passage: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br /><br />",
+    "eventName": "ARK Play Launch Event",
+    "eventSubheader": "A sweepstake event by delegate Lemii to celebrate the launch of ARK Play!",
+    "description": "Hi everyone, welcome to the first ever event created with ARK Play!<br /><br />The goal of this event is to predict the price of Bitcoin in USD on the first of September, 2019. The prediction that is closest to the value wins the prize pool! The price consists out of the sum of all predictions that have been placed (10 Ѧ each), plus an additional 150 Ѧ sponsored by myself. The more people that participate, the bigger the prize pool gets! 🚀<br /><br />How does it work? Simple! Move the slider to your prediction, and press the 'Submit' button! Your ARK wallet will automatically open with all required fields pre-populated. Confirm the transaction and you're done!<br /><br />Good luck and have fun! 🕹<br /><br /><b>Updates!</b><br /><ul><li>User 'arkbets' has just donated a very generous extra 500 Ѧ to the prize pool! 🎉</li><li> 190 Ѧ was just donated by address AUjifXFQiXTfbyuVUw7eo2f9L8jbzJdLXQ 🎉</li><li>100 Ѧ was just donated by address AZNRiscvLB88vL8qjczLQJmqjY41kAK51Q 🎉</li><li>And another 310 Ѧ was just donated by address AUjifXFQiXTfbyuVUw7eo2f9L8jbzJdLXQ again 🎉</li></ul>Incredible to see these prize pool donations! You people are awesome.",
     "rules": [
-      "Predict the price of ARK in USD on 2019-09-01",
+      "Predict the price of BTC in USD on 2019-09-01",
       "Price according to CryptoCompare's historical data",
-      "5 ARK per submission",
+      "10 ARK per submission",
       "One submission per address",
-      "All dates are in UTC 00:00",
-      "Be fair and don't submit too many predictions 😎"
-    ]
+      "Submission deadline: 2019-08-01",
+      "All dates are UTC 00:00",
+      "The three closest predictions will win a price (1st place 70%, 2nd place 20%, 3rd place 10%)",
+      "The winners will automatically be announced on 2019-09-01",
+      "The host of the event is exempt from any prizes.",
+      "Be fair to others and don't submit too many predictions 😎"
+    ],
+    "eventSubHeader": "A sweepstake event to celebrate the launch of ARK Play"
   },
   "layout": {
     "theme": "default"
   },
   "event": {
     "type": "sweepstake",
-    "contestOpen": "2019-06-01",
-    "contestClosed": "2019-07-12",
-    "submissionPrice": 5,
-    "address": "DEZfV8gbH4toSt2TPJ2t3FkqvxHLSpTgy4"
+    "contestOpen": "2019-07-15",
+    "contestClosed": "2019-08-01",
+    "submissionPrice": 10,
+    "address": "AaZuHTgTNeCdAhVFb6hFbevGtBKhFAGFQj",
+    "prizes": [0.7, 0.2, 0.1]
   },
   "network": {
     "coin": "ARK",
-    "api": "https://dexplorer.ark.io/api",
+    "api": "https://explorer.ark.io/api",
     "uri": "ark",
-    "explorer": "https://dexplorer.ark.io",
+    "explorer": "https://explorer.ark.io",
     "arktoshis": 100000000
   },
   "sweepstake": {
-    "coinToPredict": "ARK",
-    "dateToPredict": "2019-07-12",
+    "coinToPredict": "BTC",
+    "dateToPredict": "2019-09-01",
     "predictionCurrency": "USD",
-    "minAmount": 0.01,
-    "maxAmount": 2,
+    "minAmount": 1000,
+    "maxAmount": 50000,
     "chartBars": 8,
-    "chartFloor": 0,
-    "sliderStepSize": "0.01"
+    "chartFloor": 1000,
+    "sliderStepSize": "1"
   },
   "raffle": {
-    "displayTickets": 12,
-    "prefix": "SUM",
-    "tickets": [
-      "SUM-000",
-      "SUM-001",
-      "SUM-002",
-      "SUM-003",
-      "SUM-004",
-      "SUM-005",
-      "SUM-006",
-      "SUM-007",
-      "SUM-008",
-      "SUM-009",
-      "SUM-010",
-      "SUM-011",
-      "SUM-012",
-      "SUM-013",
-      "SUM-014",
-      "SUM-015",
-      "SUM-016",
-      "SUM-017",
-      "SUM-018",
-      "SUM-019",
-      "SUM-020",
-      "SUM-021",
-      "SUM-022",
-      "SUM-023",
-      "SUM-024",
-      "SUM-025",
-      "SUM-026",
-      "SUM-027",
-      "SUM-028",
-      "SUM-029",
-      "SUM-030",
-      "SUM-031",
-      "SUM-032",
-      "SUM-033",
-      "SUM-034",
-      "SUM-035",
-      "SUM-036",
-      "SUM-037",
-      "SUM-038",
-      "SUM-039",
-      "SUM-040",
-      "SUM-041",
-      "SUM-042",
-      "SUM-043",
-      "SUM-044",
-      "SUM-045",
-      "SUM-046",
-      "SUM-047",
-      "SUM-048",
-      "SUM-049"
-    ]
+    "displayTickets": 0,
+    "prefix": "",
+    "tickets": []
   }
 }
