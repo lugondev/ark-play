@@ -28,7 +28,10 @@ const Sweepstake = (props: SweepstakeProps) => {
   const [warning, setWarning] = useState<string>('');
 
   const handlePredictionChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = e.target;
+    let { value } = e.target;
+    if (value > sweepstake.maxAmount) value = sweepstake.maxAmount;
+    if (value < sweepstake.minAmount) value = sweepstake.minAmount;
+
     setPrediction(value.toString());
   };
 

@@ -24,7 +24,16 @@ const UserSubmission = (props: UserSubmissionProps) => (
       </h5>
       <hr className="w-25" />
       <h1 className="display-3 font-weight-bold">
-        {currencies[sweepstake.predictionCurrency]} {props.prediction}
+        {currencies[sweepstake.predictionCurrency]}{' '}
+        <input
+          type="number"
+          value={props.prediction}
+          className="no-border font-weight-bold"
+          onChange={props.handlePredictionChange}
+          min={sweepstake.minAmount}
+          max={sweepstake.maxAmount}
+          step={sweepstake.sliderStepSize}
+        />
       </h1>
       <div className="slidecontainer">
         <input
