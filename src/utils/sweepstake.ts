@@ -6,9 +6,7 @@ import { ContestSubmission } from '../interfaces/general';
 
 const fetchCurrentValue = (): Promise<any> => {
   return fetch(
-    `https://min-api.cryptocompare.com/data/price?fsym=${sweepstake.coinToPredict}&tsyms=${
-      sweepstake.predictionCurrency
-    }`
+    `https://min-api.cryptocompare.com/data/price?fsym=${sweepstake.coinToPredict}&tsyms=${sweepstake.predictionCurrency}`
   )
     .then(res => res.json())
     .then(json => json[sweepstake.predictionCurrency]);
@@ -20,7 +18,7 @@ const fetchFinalPrice = async (): Promise<number> => {
   const price = await fetch(
     `https://min-api.cryptocompare.com/data/pricehistorical?fsym=${
       sweepstake.coinToPredict
-    }&tsyms=${sweepstake.predictionCurrency}&ts=${ts}`
+    }&tsyms=${sweepstake.predictionCurrency}&ts=${ts - 1}`
   )
     .then(res => res.json())
     .then(json => json[sweepstake.coinToPredict][sweepstake.predictionCurrency]);
